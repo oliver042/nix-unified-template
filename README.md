@@ -1,6 +1,6 @@
 [![project chat](https://img.shields.io/badge/zulip-join_chat-brightgreen.svg)](https://nixos.zulipchat.com/#narrow/stream/413950-nix)
 
-# nixos-unified-template
+# nix-unified-template
 
 A multi-platform Nix configuration template optimized as development environment (includes direnv, neovim with LSP[^neovim] and such), based on [nixos-unified]. See [`./modules`](modules/) to see what's available. We support [home-manager] (see `./modules/home`), [nix-darwin] (see `./modules/darwin`) and [NixOS] (see `./modules/nixos`).
 
