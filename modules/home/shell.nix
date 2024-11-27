@@ -1,13 +1,41 @@
 { ... }:
 {
+  
+  # link all files in `../scripts` to `~/.local/bin`
+  home.file.".local/bin" = {
+    source = ../scripts;
+    recursive = true;   # link recursively
+    executable = true;  # make all files executable
+  };
+
   programs = {
     # on macOS, you probably don't need this
     bash = {
       enable = true;
       initExtra = ''
         # Custom bash profile goes here
+        # Eanable color support of ls and also add handy aliases
+        if [ -x /usr/bin/dircolors ]; then
+            test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+            alias ls='ls --color=auto'            
+            alias grep='grep --color=auto'
+        fi
       '';
-    };
+
+      profileExtra = ''
+        # Custom profile goes here
+        # set PATH so it includes user's private bin if it exists
+        if [ -d "$HOME/.local/bin" ] ; then
+            PATH="$HOME/.local/bin:$PATH"
+        fi
+      '';
+
+      shellAliases = {
+        ll = "ls -alF";
+        la = "ls -A";
+        l = "ls -CF";
+      };
+    };    
 
     # For macOS's default shell.
     zsh = {
