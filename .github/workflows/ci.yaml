@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - main
-      - update_flake_lock_action
-      - ci/**
+      # - update_flake_lock_action
+      # - ci/**
   pull_request:
 jobs:
   nix:
