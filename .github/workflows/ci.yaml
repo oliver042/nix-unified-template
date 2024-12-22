@@ -3,8 +3,7 @@ on:
   push:
     branches:
       - main
-      # - update_flake_lock_action
-      # - ci/**
+      - ci/**
   pull_request:
 jobs:
   nix:
@@ -23,4 +22,3 @@ jobs:
       - name: om init tests
         run: |
           om init --test .
-
